@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles with Dynamic Comment System</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #2a1111;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #17151584;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #000000;
+        }
+        .article {
+            margin-bottom: 40px;
+        }
+        .comment-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+        h2 {
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        .stats-display {
+            display: grid;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .stats-display strong {
+            color: #da110a;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .required {
+            color: #d9534f;
+            margin-left: 2px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background-color: #1eaf31c7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: #dd130c;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .star-rating {
+            font-size: 1.5em;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .star-rating i {
+            transition: color 0.2s;
+        }
+        .star-rating i.selected {
+            color: rgb(238, 9, 9);
+        }
+        .selected-rating-display {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .comment-card {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .comment-meta {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .comment-rating {
+            color: rgb(239, 10, 10);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Article 1 -->
+        <div class="article" id="article-1">
+            <header>
+                <h1>The Future of Digital Content: Trends Shaping Tomorrow's Media Landscape</h1>
+                <p>Published November 17, 2025</p>
+            </header>
+            <section class="article-body">
+                <p>The digital content landscape is undergoing rapid transformation, driven by technological advancements, evolving consumer preferences, and new platforms. As we look to the future, it’s clear that the way we create, consume, and share media is evolving in ways we have yet to fully comprehend. From interactive storytelling and immersive virtual reality experiences to AI-generated content and personalization, digital content is becoming increasingly dynamic and user-driven.</p>
+            </section>
+
+            <div class="comment-section" id="comment-section-1">
+                <h2>Reader Feedback</h2>
+
+                <div id="stats-display-1" class="stats-display">
+                    <span>Total Comments: <strong id="total-comments-1">0</strong></span>
+                    <span>Average Rating: <strong id="average-rating-1">N/A</strong></span>
+                </div>
+
+                <form id="comment-form-1">
+                    <h3>Leave a Comment</h3>
+
+                    <div class="form-group">
+                        <label for="name-1">Name <span class="required">*</span></label>
+                        <input type="text" id="name-1" name="name" required minlength="2" maxlength="50">
+                        <div class="error-message" id="error-name-1"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-1">Email (Optional)</label>
+                        <input type="email" id="email-1" name="email">
+                        <div class="error-message" id="error-email-1"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-text-1">Comment <span class="required">*</span></label>
+                        <textarea id="comment-text-1" name="comment-text" required minlength="10" maxlength="500"></textarea>
+                        <div class="error-message" id="error-comment-text-1"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Content Rating (Optional)</label>
+                        <div class="star-rating" id="star-rating-1">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="rating-value-1" name="rating-value" value="0">
+                        <span id="selected-rating-display-1" class="selected-rating-display">No rating selected</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Comment</button>
+                </form>
+
+                <div id="comments-list-1"></div>
+            </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="article" id="article-2">
+            <header>
+                <h1>The Rise of AI in Journalism: Revolutionizing Newsrooms and Storytelling</h1>
+                <p>Published November 17, 2025</p>
+            </header>
+            <section class="article-body">
+                <p>Artificial Intelligence (AI) is steadily making its presence felt in journalism, reshaping the way news is reported, produced, and consumed. As technology continues to evolve, newsrooms are turning to AI to enhance efficiency, streamline processes, and even create new forms of storytelling. From automated writing tools that generate reports in real-time to sophisticated algorithms that curate personalized content for readers, AI is opening up new possibilities for journalists and media outlets alike.</p>
+            </section>
+
+            <div class="comment-section" id="comment-section-2">
+                <h2>Reader Feedback</h2>
+
+                <div id="stats-display-2" class="stats-display">
+                    <span>Total Comments: <strong id="total-comments-2">0</strong></span>
+                    <span>Average Rating: <strong id="average-rating-2">N/A</strong></span>
+                </div>
+
+                <form id="comment-form-2">
+                    <h3>Leave a Comment</h3>
+
+                    <div class="form-group">
+                        <label for="name-2">Name <span class="required">*</span></label>
+                        <input type="text" id="name-2" name="name" required minlength="2" maxlength="50">
+                        <div class="error-message" id="error-name-2"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-2">Email (Optional)</label>
+                        <input type="email" id="email-2" name="email">
+                        <div class="error-message" id="error-email-2"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-text-2">Comment <span class="required">*</span></label>
+                        <textarea id="comment-text-2" name="comment-text" required minlength="10" maxlength="500"></textarea>
+                        <div class="error-message" id="error-comment-text-2"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Content Rating (Optional)</label>
+                        <div class="star-rating" id="star-rating-2">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="rating-value-2" name="rating-value" value="0">
+                        <span id="selected-rating-display-2" class="selected-rating-display">No rating selected</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Comment</button>
+                </form>
+
+                <div id="comments-list-2"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Articles data structure for storing comments and ratings in memory
+    const articles = [1, 2]; // List of article IDs for easier handling
+    const commentsData = {}; // Object to hold comments and ratings for each article
+
+    // Function to update statistics
+    const updateStatistics = (articleId) => {
+        const comments = commentsData[articleId] || [];
+        const totalComments = comments.length;
+        const totalRatings = comments.filter(c => c.rating > 0);
+        const sumRatings = totalRatings.reduce((sum, comment) => sum + comment.rating, 0);
+        const avgRating = totalRatings.length > 0 
+            ? (sumRatings / totalRatings.length).toFixed(1) 
+            : 'N/A';
+
+        document.getElementById(`total-comments-${articleId}`).textContent = totalComments;
+        document.getElementById(`average-rating-${articleId}`).textContent = avgRating;
+    };
+
+    // Function to render the comments
+    const renderComments = (articleId) => {
+        const comments = commentsData[articleId] || [];
+        const commentsList = document.getElementById(`comments-list-${articleId}`);
+        commentsList.innerHTML = '';
+
+        if (comments.length === 0) {
+            commentsList.innerHTML = '<p>No comments yet.</p>';
+            return;
+        }
+
+        comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment-card';
+            commentDiv.innerHTML = `
+                <div class="comment-meta">
+                    <strong>${comment.name}</strong> ${comment.email ? `(${comment.email})` : ''}
+                    <span class="comment-rating">${'★'.repeat(comment.rating)}${'☆'.repeat(5 - comment.rating)}</span>
+                </div>
+                <p>${comment.text}</p>
+            `;
+            commentsList.appendChild(commentDiv);
+        });
+    };
+
+    // Iterate over each article to handle the comment form and star ratings
+    articles.forEach(articleId => {
+        const form = document.getElementById(`comment-form-${articleId}`);
+        const starRatingContainer = document.getElementById(`star-rating-${articleId}`);
+        const ratingValueInput = document.getElementById(`rating-value-${articleId}`);
+        const selectedRatingDisplay = document.getElementById(`selected-rating-display-${articleId}`);
+
+        const stars = starRatingContainer.querySelectorAll('i');
+        
+        // Handle star rating selection
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const rating = index + 1; // 1–5
+
+                ratingValueInput.value = rating;
+
+                stars.forEach(s => s.style.color = '#ccc');  // Reset star colors
+
+                for (let i = 0; i < rating; i++) {
+                    stars[i].style.color = '#f39c12';  // Highlight selected stars
+                }
+
+                selectedRatingDisplay.textContent = `Selected: ${rating} Star${rating > 1 ? 's' : ''}`;
+            });
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById(`name-${articleId}`).value.trim();
+            const email = document.getElementById(`email-${articleId}`).value.trim();
+            const commentText = document.getElementById(`comment-text-${articleId}`).value.trim();
+            const rating = parseInt(ratingValueInput.value) || 0;
+
+            // Simple validation
+            if (name.length < 2 || commentText.length < 10) {
+                alert('Please fill all the required fields correctly.');
+                return;
+            }
+
+            // Add new comment to memory
+            const newComment = { name, email, text: commentText, rating };
+
+            // Initialize article data if not yet
+            if (!commentsData[articleId]) {
+                commentsData[articleId] = [];
+            }
+
+            commentsData[articleId].push(newComment);
+
+            // Update UI and statistics
+            renderComments(articleId);
+            updateStatistics(articleId);
+
+            // Reset the form
+            form.reset();
+            ratingValueInput.value = 0;
+            stars.forEach(s => s.style.color = '#ccc');
+            selectedRatingDisplay.textContent = 'No rating selected';
+        });
+
+        // Initial rendering of comments and statistics for each article
+        renderComments(articleId);
+        updateStatistics(articleId);
+    });
+});
+</script>
+
+    </script>
+</body>
+</html>
